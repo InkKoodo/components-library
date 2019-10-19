@@ -1,0 +1,7 @@
+{
+  "name": "components-library",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Alex Marinkevich <bitrate595@gmail.com>",
+  "license": "MIT"
+}
