@@ -3,5 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Alex Marinkevich <bitrate595@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-actions": "^5.2.4",
+    "@storybook/addon-links": "^5.2.4",
+    "@storybook/react": "^5.2.4",
+    "babel-loader": "^8.0.6",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
 }
