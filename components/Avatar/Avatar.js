@@ -1,51 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Avatar = ({ userImg, isMessageRecieved }) => {
-  const noAvatar =
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqAt_2iUDCoSAkIIbXlF9oEDIToRb9DUmneKAen_5C5XoBNnsx';
+export const Avatar = ({ userImg, hasMessage }) => (
+  <Root>
+    <AvatarFrame>
+      <img width="100%" src={userImg} alt="User" />
+    </AvatarFrame>
 
-  return (
-    <Container>
-      <AvatarWrapper>
-        {userImg !== '' ? (
-          <UserAvatar src={userImg} alt="User" />
-        ) : (
-          <UserAvatar src={noAvatar} alt="User" />
-        )}
-      </AvatarWrapper>
-      {isMessageRecieved ? <MessageIndicator /> : null}
-    </Container>
-  );
-};
+    {hasMessage && <MessageIndicator />}
+  </Root>
+);
 
 Avatar.defaultProps = {
-  isMessageRecieved: false,
-  userImg: '',
+  hasMessage: false,
+  userImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqAt_2iUDCoSAkIIbXlF9oEDIToRb9DUmneKAen_5C5XoBNnsx',
 };
 
-const Container = styled.div`
+const Root = styled.div`
   width: 50px;
   height: 50px;
   position: relative;
 `;
 
-const AvatarWrapper = styled.div`
+const AvatarFrame = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
   overflow: hidden;
-  border-radius: 100px;
-  back
-`;
-
-const UserAvatar = styled.img`
-  width: 100%;
-  height: auto;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const MessageIndicator = styled.div`
@@ -55,5 +40,5 @@ const MessageIndicator = styled.div`
   width: 8px;
   height: 8px;
   background-color: #f06f6c;
-  border-radius: 100px;
+  border-radius: 50%;
 `;
