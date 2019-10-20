@@ -13,4 +13,4 @@ export const Default = () => <Avatar userImg={avatarMock} />;
 
 export const MessageIndicator = () => <Avatar userImg={avatarMock} isMessageRecieved/>;
 
-export const NoAvatar = () => <Avatar userImg='' />;
+export const NoAvatar = () => <Avatar />;

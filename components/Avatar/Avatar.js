@@ -21,6 +21,7 @@ export const Avatar = ({ userImg, isMessageRecieved }) => {
 
 Avatar.defaultProps = {
   isMessageRecieved: false,
+  userImg: '',
 };
 
 const Container = styled.div`
