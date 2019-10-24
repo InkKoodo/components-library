@@ -1,27 +1,43 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
-
-export const Sidebar = ({sidebarTitle, isShown, expandIcon, maxWidth, children }) => {
+export const Sidebar = ({ sidebarTitle, isShown, expandIcon, maxWidth, children }) => {
   return (
     <Root maxWidht={maxWidth} isShown={isShown}>
       <ExpandButton>{expandIcon}</ExpandButton>
       <Header>
         <SidebarTitle>{sidebarTitle}</SidebarTitle>
       </Header>
-      <Line />
+      <HeaderLine />
       {children}
     </Root>
   );
 };
 
+Sidebar.propTypes = {
+  sidebarTitle: PropTypes.string,
+  isShown: PropTypes.bool,
+  expandIcon: PropTypes.string,
+  maxWidth: PropTypes.string,
+};
+
+Sidebar.defaultProps = {
+  maxWidth: '250px',
+  isShown: true,
+  sidebarTitle: 'Sidebar',
+  expandIcon: '=',
+};
+
 const Root = styled.div`
   position: relative;
-  background-color: #fff;
+  background-color: #455160;
   width: 100%;
   max-width: ${props => props.maxWidht};
-  transition: .3s;
-  right: ${props => !props.isShown && props.maxWidht }
+  transition: 0.3s;
+  right: ${props => !props.isShown && props.maxWidht};
+  box-shadow: 4px 3px 6px 0px #c1c1c1;
 `;
 
 const ExpandButton = styled.button`
@@ -32,6 +48,7 @@ const ExpandButton = styled.button`
   top: 0;
   right: -30px;
   background-color: transparent;
+  color: #455160;
   border: none;
 `;
 
@@ -44,29 +61,43 @@ const Header = styled.div`
 
 const SidebarTitle = styled.h2`
   font-size: 20px;
-  color: #333;
+  color: #b4bcc5;
   margin: 0;
 `;
 
 const Line = styled.div`
   width: 100%;
   height: 1px;
-  background-color: grey;
+  background-color: #4e5c6d;
+`;
+
+const HeaderLine = styled(Line)`
+  margin-bottom: 10px;
 `;
 
 export const Section = ({ name, children }) => {
   return (
-    <SidebarSection>
-      <SectionTop>
-        {name !== '' && <SectionName>{name}</SectionName>}
-        <Line />
-      </SectionTop>
+    <SectionRoot>
+      {name !== '' && (
+        <SectionTop>
+          <SectionName>{name}</SectionName>
+          <Line />
+        </SectionTop>
+      )}
       {children}
-    </SidebarSection>
+    </SectionRoot>
   );
 };
 
-const SidebarSection = styled.div`
+Section.propTypes = {
+  name: PropTypes.string,
+};
+
+Section.defaultProps = {
+  name: '',
+};
+
+const SectionRoot = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -74,12 +105,16 @@ const SidebarSection = styled.div`
 const SectionTop = styled.div`
   display: flex;
   align-items: center;
-  padding: 25px 0 0 0
+  padding: 25px 0 5px 0;
 `;
 
 const SectionName = styled.h3`
   display: flex;
   margin: 0 10px;
+  font-size: 14px;
+  color: #647080;
+  text-transform: uppercase;
+  white-space: nowrap;
 `;
 
 export const Item = ({ children, icon }) => {
@@ -91,18 +126,26 @@ export const Item = ({ children, icon }) => {
   );
 };
 
+Item.propTypes = {
+  icon: PropTypes.string,
+};
+
+Item.defaultProps = {
+  icon: '',
+};
+
 const ItemRoot = styled.a`
   display: flex;
   padding: 10px;
   box-sizing: border-box;
   align-items: center;
   text-decoration: none;
-  color: #333;
+  color: #b4bcc5;
   overflow: hidden;
   transition: 0.3s;
   :hover {
-    background-color: #333;
-    color: #fff;
+    background-color: #9f8cc1;
+    color: #efefef;
     cursor: pointer;
   }
 `;
@@ -119,18 +162,3 @@ const ItemIcon = styled.div`
   padding: 0 10px 0 0;
   box-sizing: border-box;
 `;
-
-Sidebar.defaultProps = {
-  maxWidth: '250px',
-  isShown: true,
-  sidebarTitle: 'Sidebar',
-  expandIcon: '=',
-};
-
-Section.defaultProps = {
-  name: '',
-};
-
-Item.defaultProps = {
-  icon: '',
-};
