@@ -1,5 +1,6 @@
 import React from 'react';
-import { Sidebar, Section, Item } from './Sidebar';
+import { Sidebar, Section, Item } from '.';
+import {FaApple} from 'react-icons/fa'
 
 export default {
   title: 'Sidebar',
@@ -12,7 +13,7 @@ export const Default = () => (
       <Item>Try some new</Item>
     </Section>
     <Section name='Section'>
-      <Item icon="©">Item with icon</Item>
+      <Item icon={<FaApple/>}>Item with icon</Item>
       <Item>New item without logo</Item>
     </Section>
     <Section name='One more section'>
